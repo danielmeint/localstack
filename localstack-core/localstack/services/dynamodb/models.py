@@ -3,10 +3,12 @@ from typing import TypedDict
 
 from localstack.aws.api.dynamodb import (
     AttributeMap,
+    BackupDetails,
     Key,
     RegionName,
     ReplicaDescription,
     StreamViewType,
+    TableDescription,
     TableName,
     TimeToLiveSpecification,
 )
@@ -91,6 +93,13 @@ class TableRecords(TypedDict):
 RecordsMap = dict[TableName, TableRecords]
 
 
+@dataclasses.dataclass
+class Backup:
+    backup_detail: BackupDetails
+    backup_file: str
+    table_name: str
+
+
 class DynamoDBStore(BaseStore):
     # maps global table names to configurations (for the legacy v.2017 tables)
     GLOBAL_TABLES: dict[str, dict] = CrossRegionAttribute(default=dict)
@@ -107,7 +116,7 @@ class DynamoDBStore(BaseStore):
     TABLE_TAGS: dict[str, dict] = CrossRegionAttribute(default=dict)
 
     # maps table names to cached table definitions
-    table_definitions: dict[str, dict] = LocalAttribute(default=dict)
+    table_definitions: dict[str, TableDescription] = LocalAttribute(default=dict)
 
     # maps table names to additional table properties that are not stored upstream (e.g., ReplicaUpdates)
     table_properties: dict[str, dict] = LocalAttribute(default=dict)
@@ -116,7 +125,7 @@ class DynamoDBStore(BaseStore):
     ttl_specifications: dict[str, TimeToLiveSpecification] = LocalAttribute(default=dict)
 
     # maps backups
-    backups: dict[str, dict] = LocalAttribute(default=dict)
+    backups: dict[str, Backup] = LocalAttribute(default=dict)
 
 
 dynamodb_stores = AccountRegionBundle("dynamodb", DynamoDBStore)

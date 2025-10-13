@@ -56,6 +56,7 @@ from localstack.aws.api.dynamodb import (
     GetItemInput,
     GetItemOutput,
     GlobalTableAlreadyExistsException,
+    GlobalTableDescription,
     GlobalTableNotFoundException,
     KinesisStreamingDestinationOutput,
     ListGlobalTablesOutput,
@@ -1081,7 +1082,9 @@ class DynamoDBProvider(DynamodbApi, ServiceLifecycleHook):
         if global_table_name in global_tables:
             raise GlobalTableAlreadyExistsException("Global table with this name already exists")
         replication_group = [grp.copy() for grp in replication_group or []]
-        data = {"GlobalTableName": global_table_name, "ReplicationGroup": replication_group}
+        data = GlobalTableDescription(
+            GlobalTableName=global_table_name, ReplicationGroup=replication_group
+        )
         global_tables[global_table_name] = data
         for group in replication_group:
             group["ReplicaStatus"] = "ACTIVE"
