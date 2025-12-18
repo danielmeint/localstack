@@ -341,7 +341,7 @@ class ChangeSetModelExecutor(ChangeSetModelPreproc):
 
                     def cleanup():
                         # TODO: handle other update replace policy values
-                        if after.update_replace_policy == UpdateReplacePolicy.Delete:
+                        if after.update_replace_policy != UpdateReplacePolicy.Retain:
                             self._process_event(
                                 action=ChangeAction.Remove,
                                 logical_resource_id=name,
@@ -435,7 +435,7 @@ class ChangeSetModelExecutor(ChangeSetModelPreproc):
 
             def perform_deletion():
                 # TODO: other deletion policies
-                if before.deletion_policy == DeletionPolicy.Delete:
+                if before.deletion_policy != DeletionPolicy.Retain:
                     self._process_event(
                         action=ChangeAction.Remove,
                         logical_resource_id=name,
