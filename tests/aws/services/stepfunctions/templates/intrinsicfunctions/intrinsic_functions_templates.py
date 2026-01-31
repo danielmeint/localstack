@@ -98,3 +98,6 @@ class IntrinsicFunctionTemplate(TemplateLoader):
     ESCAPE_SEQUENCE: Final[str] = os.path.join(
         _THIS_FOLDER, "statemachines/generic/escape_sequence.json5"
     )
+    FORMAT_ESCAPED_BRACES: Final[str] = os.path.join(
+        _THIS_FOLDER, "statemachines/generic/format_escaped_braces.json5"
+    )

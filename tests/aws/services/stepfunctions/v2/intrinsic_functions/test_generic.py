@@ -106,3 +106,17 @@ class TestGeneric:
             IFT.ESCAPE_SEQUENCE,
             input_values,
         )
+
+    @markers.aws.validated
+    def test_format_escaped_braces(
+        self, create_state_machine_iam_role, create_state_machine, sfn_snapshot, aws_client
+    ):
+        input_values = ["test123", "hello world", ""]
+        create_and_test_on_inputs(
+            aws_client,
+            create_state_machine_iam_role,
+            create_state_machine,
+            sfn_snapshot,
+            IFT.FORMAT_ESCAPED_BRACES,
+            input_values,
+        )

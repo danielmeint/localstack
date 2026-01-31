@@ -1546,7 +1546,10 @@ class Preprocessor(ASLParserVisitor):
     def visitString_intrinsic_function(
         self, ctx: ASLParser.String_intrinsic_functionContext
     ) -> StringIntrinsicFunction:
-        intrinsic_function_derivation = ctx.STRINGINTRINSICFUNC().getText()[1:-1]
+        raw_text = ctx.STRINGINTRINSICFUNC().getText()
+        intrinsic_function_derivation = raw_text[1:-1]
+        # Decode JSON-escaped backslashes since the definition is stored as JSON.
+        intrinsic_function_derivation = intrinsic_function_derivation.replace("\\\\", "\\")
         function, _ = IntrinsicParser.parse(intrinsic_function_derivation)
         return StringIntrinsicFunction(
             intrinsic_function_derivation=intrinsic_function_derivation,

@@ -1,6 +1,6 @@
 {
   "tests/aws/services/stepfunctions/v2/intrinsic_functions/test_generic.py::TestGeneric::test_format_1": {
-    "recorded-date": "09-02-2023, 10:21:18",
+    "recorded-date": "31-01-2026, 16:42:14",
     "recorded-content": {
       "exec_hist_resp_0": {
         "events": [
@@ -474,7 +474,7 @@
     }
   },
   "tests/aws/services/stepfunctions/v2/intrinsic_functions/test_generic.py::TestGeneric::test_format_2": {
-    "recorded-date": "09-02-2023, 10:21:23",
+    "recorded-date": "31-01-2026, 16:42:15",
     "recorded-content": {
       "exec_hist_resp_0": {
         "events": [
@@ -1075,7 +1075,7 @@
     }
   },
   "tests/aws/services/stepfunctions/v2/intrinsic_functions/test_generic.py::TestGeneric::test_context_json_path": {
-    "recorded-date": "26-11-2023, 15:15:56",
+    "recorded-date": "31-01-2026, 16:42:15",
     "recorded-content": {
       "exec_hist_resp_0": {
         "events": [
@@ -1147,7 +1147,7 @@
     }
   },
   "tests/aws/services/stepfunctions/v2/intrinsic_functions/test_generic.py::TestGeneric::test_nested_calls_1": {
-    "recorded-date": "30-11-2023, 17:29:44",
+    "recorded-date": "31-01-2026, 16:42:15",
     "recorded-content": {
       "exec_hist_resp_0": {
         "events": [
@@ -1219,7 +1219,7 @@
     }
   },
   "tests/aws/services/stepfunctions/v2/intrinsic_functions/test_generic.py::TestGeneric::test_nested_calls_2": {
-    "recorded-date": "30-11-2023, 17:34:01",
+    "recorded-date": "31-01-2026, 16:42:15",
     "recorded-content": {
       "exec_hist_resp_0": {
         "events": [
@@ -1291,7 +1291,7 @@
     }
   },
   "tests/aws/services/stepfunctions/v2/intrinsic_functions/test_generic.py::TestGeneric::test_escape_sequence": {
-    "recorded-date": "30-11-2023, 17:58:53",
+    "recorded-date": "31-01-2026, 16:42:15",
     "recorded-content": {
       "exec_hist_resp_0": {
         "events": [
@@ -1350,6 +1350,212 @@
                   "Hello",
                   "World"
                 ]
+              },
+              "outputDetails": {
+                "truncated": false
+              }
+            },
+            "id": 4,
+            "previousEventId": 3,
+            "timestamp": "timestamp",
+            "type": "ExecutionSucceeded"
+          }
+        ],
+        "ResponseMetadata": {
+          "HTTPHeaders": {},
+          "HTTPStatusCode": 200
+        }
+      }
+    }
+  },
+  "tests/aws/services/stepfunctions/v2/intrinsic_functions/test_generic.py::TestGeneric::test_format_escaped_braces": {
+    "recorded-date": "31-01-2026, 16:42:15",
+    "recorded-content": {
+      "exec_hist_resp_0": {
+        "events": [
+          {
+            "executionStartedEventDetails": {
+              "input": {
+                "FunctionInput": "test123"
+              },
+              "inputDetails": {
+                "truncated": false
+              },
+              "roleArn": "snf_role_arn"
+            },
+            "id": 1,
+            "previousEventId": 0,
+            "timestamp": "timestamp",
+            "type": "ExecutionStarted"
+          },
+          {
+            "id": 2,
+            "previousEventId": 0,
+            "stateEnteredEventDetails": {
+              "input": {
+                "FunctionInput": "test123"
+              },
+              "inputDetails": {
+                "truncated": false
+              },
+              "name": "State_0"
+            },
+            "timestamp": "timestamp",
+            "type": "PassStateEntered"
+          },
+          {
+            "id": 3,
+            "previousEventId": 2,
+            "stateExitedEventDetails": {
+              "name": "State_0",
+              "output": {
+                "FunctionResult": "{\"key\":\"test123\"}"
+              },
+              "outputDetails": {
+                "truncated": false
+              }
+            },
+            "timestamp": "timestamp",
+            "type": "PassStateExited"
+          },
+          {
+            "executionSucceededEventDetails": {
+              "output": {
+                "FunctionResult": "{\"key\":\"test123\"}"
+              },
+              "outputDetails": {
+                "truncated": false
+              }
+            },
+            "id": 4,
+            "previousEventId": 3,
+            "timestamp": "timestamp",
+            "type": "ExecutionSucceeded"
+          }
+        ],
+        "ResponseMetadata": {
+          "HTTPHeaders": {},
+          "HTTPStatusCode": 200
+        }
+      },
+      "exec_hist_resp_1": {
+        "events": [
+          {
+            "executionStartedEventDetails": {
+              "input": {
+                "FunctionInput": "hello world"
+              },
+              "inputDetails": {
+                "truncated": false
+              },
+              "roleArn": "snf_role_arn"
+            },
+            "id": 1,
+            "previousEventId": 0,
+            "timestamp": "timestamp",
+            "type": "ExecutionStarted"
+          },
+          {
+            "id": 2,
+            "previousEventId": 0,
+            "stateEnteredEventDetails": {
+              "input": {
+                "FunctionInput": "hello world"
+              },
+              "inputDetails": {
+                "truncated": false
+              },
+              "name": "State_0"
+            },
+            "timestamp": "timestamp",
+            "type": "PassStateEntered"
+          },
+          {
+            "id": 3,
+            "previousEventId": 2,
+            "stateExitedEventDetails": {
+              "name": "State_0",
+              "output": {
+                "FunctionResult": "{\"key\":\"hello world\"}"
+              },
+              "outputDetails": {
+                "truncated": false
+              }
+            },
+            "timestamp": "timestamp",
+            "type": "PassStateExited"
+          },
+          {
+            "executionSucceededEventDetails": {
+              "output": {
+                "FunctionResult": "{\"key\":\"hello world\"}"
+              },
+              "outputDetails": {
+                "truncated": false
+              }
+            },
+            "id": 4,
+            "previousEventId": 3,
+            "timestamp": "timestamp",
+            "type": "ExecutionSucceeded"
+          }
+        ],
+        "ResponseMetadata": {
+          "HTTPHeaders": {},
+          "HTTPStatusCode": 200
+        }
+      },
+      "exec_hist_resp_2": {
+        "events": [
+          {
+            "executionStartedEventDetails": {
+              "input": {
+                "FunctionInput": ""
+              },
+              "inputDetails": {
+                "truncated": false
+              },
+              "roleArn": "snf_role_arn"
+            },
+            "id": 1,
+            "previousEventId": 0,
+            "timestamp": "timestamp",
+            "type": "ExecutionStarted"
+          },
+          {
+            "id": 2,
+            "previousEventId": 0,
+            "stateEnteredEventDetails": {
+              "input": {
+                "FunctionInput": ""
+              },
+              "inputDetails": {
+                "truncated": false
+              },
+              "name": "State_0"
+            },
+            "timestamp": "timestamp",
+            "type": "PassStateEntered"
+          },
+          {
+            "id": 3,
+            "previousEventId": 2,
+            "stateExitedEventDetails": {
+              "name": "State_0",
+              "output": {
+                "FunctionResult": "{\"key\":\"\"}"
+              },
+              "outputDetails": {
+                "truncated": false
+              }
+            },
+            "timestamp": "timestamp",
+            "type": "PassStateExited"
+          },
+          {
+            "executionSucceededEventDetails": {
+              "output": {
+                "FunctionResult": "{\"key\":\"\"}"
               },
               "outputDetails": {
                 "truncated": false

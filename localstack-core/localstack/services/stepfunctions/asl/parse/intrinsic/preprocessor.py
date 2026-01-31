@@ -53,6 +53,10 @@ class Preprocessor(ASLIntrinsicParserVisitor):
             return replacements.get(escaped_char, escaped_char)
         elif escaped_char == '"':
             return '"'
+        elif escaped_char == "{":
+            return "{{"  # Escape for Python's str.format()
+        elif escaped_char == "}":
+            return "}}"  # Escape for Python's str.format()
         else:
             return match.group(0)
 

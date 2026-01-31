@@ -1,0 +1,13 @@
+{
+    "Comment": "FORMAT_ESCAPED_BRACES",
+    "StartAt": "State_0",
+    "States": {
+        "State_0": {
+            "Type": "Pass",
+            "Parameters": {
+                "FunctionResult.$": "States.Format('\\{\"key\":\"{}\"\\}', $.FunctionInput)",
+            },
+            "End": true,
+        },
+    },
+}
